@@ -79,6 +79,12 @@ namespace Bot
                 }
             });
         }
+        
+        public void Stop()
+        {
+            StopTasks();
+
+        }
 
         private void WaitForRegistration()
         {
@@ -121,7 +127,8 @@ namespace Bot
 
             foreach (var task in this.tasks)
             {
-                task.Stop();
+                if(task != null)
+                    task.Stop();
             }
 
             Task.WaitAll(tasks);
